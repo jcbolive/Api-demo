@@ -167,6 +167,7 @@ Acesse:
 ```bash
 npm run dev              # inicia Wrangler local
 npm run deploy           # publica no Cloudflare Workers
+npm run build            # build de CI/Cloudflare: typecheck + validação OpenAPI
 npm run typecheck        # valida TypeScript
 npm run openapi:check    # valida presença de campos e paths principais
 npm run postman:generate # regenera collection e environment
@@ -194,6 +195,19 @@ npm run deploy
 ```
 
 O arquivo `wrangler.toml` já aponta para `src/index.ts` e define `compatibility_date`.
+
+### Deploy via Git no painel da Cloudflare
+
+Se você conectou o repositório GitHub em **Workers & Pages**, configure o build assim:
+
+| Campo | Valor |
+|---|---|
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` ou `npm run deploy` |
+| Wrangler config | `wrangler.toml` |
+| Root directory | `/` |
+
+O script `build` existe para o pipeline da Cloudflare validar TypeScript e OpenAPI antes do deploy. Ele não gera pasta `dist`, porque Cloudflare Workers publica diretamente o entrypoint definido em `wrangler.toml`.
 
 ## Endpoints principais
 

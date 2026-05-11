@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
+    "build": "npm run typecheck && npm run openapi:check",
     "typecheck": "tsc --noEmit",
     "openapi:check": "node scripts/validate-openapi.mjs",
     "postman:generate": "node scripts/generate-postman.mjs",
