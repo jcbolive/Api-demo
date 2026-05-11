@@ -4,13 +4,14 @@ import { especialidades, medicos } from '../mocks/data';
 import { agendamentoResultado, datasDisponiveis, horariosDisponiveis } from '../services/mock-service';
 import { protocol } from '../utils/random';
 import { failure, success } from '../utils/response';
+import { queryParams } from '../utils/query';
 
 export const saudeRoutes = new Hono<ApiEnv>()
   .get('/especialidades', (c) => success(c, especialidades))
   .get('/especialidades/plano/:planoId', (c) => success(c, especialidades.filter((especialidade) => (especialidade.planos as readonly string[]).includes(c.req.param('planoId')))))
   .get('/medicos/especialidade/:especialidadeId', (c) => success(c, medicos.filter((medico) => medico.especialidadeId === c.req.param('especialidadeId'))))
-  .get('/consultas/datas-disponiveis', (c) => success(c, { filtros: Object.fromEntries(new URL(c.req.url).searchParams), datas: datasDisponiveis() }))
-  .get('/consultas/horarios-disponiveis', (c) => success(c, { filtros: Object.fromEntries(new URL(c.req.url).searchParams), horarios: horariosDisponiveis() }))
+  .get('/consultas/datas-disponiveis', (c) => success(c, { filtros: queryParams(c.req.url), datas: datasDisponiveis() }))
+  .get('/consultas/horarios-disponiveis', (c) => success(c, { filtros: queryParams(c.req.url), horarios: horariosDisponiveis() }))
   .post('/consultas/agendar', async (c) => {
     const payload = await c.req.json().catch(() => ({}));
     const resultado = agendamentoResultado();

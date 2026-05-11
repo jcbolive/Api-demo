@@ -3,10 +3,11 @@ import type { ApiEnv } from '../types/api';
 import { agendamentoResultado, datasDisponiveis, horariosDisponiveis } from '../services/mock-service';
 import { protocol } from '../utils/random';
 import { failure, success } from '../utils/response';
+import { queryParams } from '../utils/query';
 
 export const agendamentosRoutes = new Hono<ApiEnv>()
-  .get('/datas-disponiveis', (c) => success(c, { filtros: Object.fromEntries(new URL(c.req.url).searchParams), datas: datasDisponiveis(8) }))
-  .get('/horarios-disponiveis', (c) => success(c, { filtros: Object.fromEntries(new URL(c.req.url).searchParams), tempoMedioAtendimentoMinutos: Number(c.req.query('tempoMedioAtendimento') ?? 30), horarios: horariosDisponiveis() }))
+  .get('/datas-disponiveis', (c) => success(c, { filtros: queryParams(c.req.url), datas: datasDisponiveis(8) }))
+  .get('/horarios-disponiveis', (c) => success(c, { filtros: queryParams(c.req.url), tempoMedioAtendimentoMinutos: Number(c.req.query('tempoMedioAtendimento') ?? 30), horarios: horariosDisponiveis() }))
   .post('/', async (c) => {
     const payload = await c.req.json().catch(() => ({}));
     const resultado = agendamentoResultado();
