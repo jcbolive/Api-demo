@@ -1,0 +1,22 @@
+{
+  "name": "mock-api-platform-workers",
+  "version": "1.0.0",
+  "description": "Enterprise Mock API Platform for omnichannel demos, integrations, frontend testing and AI POCs using Cloudflare Workers, Hono and TypeScript.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "openapi:check": "node scripts/validate-openapi.mjs",
+    "postman:generate": "node scripts/generate-postman.mjs",
+    "check": "npm run typecheck && npm run openapi:check && npm run postman:generate"
+  },
+  "dependencies": {
+    "hono": "^4.7.11"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "wrangler": "^4.14.4"
+  }
+}
