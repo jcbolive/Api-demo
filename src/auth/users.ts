@@ -5,12 +5,18 @@ export const demoCredential = {
 
 export const validUsers = new Map<string, string>([[demoCredential.user, demoCredential.secret]]);
 
-const normalizeCredential = (value?: string): string | undefined => value?.trim();
+const credentialCandidates = (value?: string): string[] => {
+  if (!value) return [];
+  return value
+    .split(',')
+    .map((candidate) => candidate.trim())
+    .filter(Boolean);
+};
 
 export const isValidCredential = (user?: string, secret?: string): boolean => {
-  const normalizedUser = normalizeCredential(user);
-  const normalizedSecret = normalizeCredential(secret);
-  return Boolean(normalizedUser && normalizedSecret && validUsers.get(normalizedUser) === normalizedSecret);
+  const users = credentialCandidates(user);
+  const secrets = credentialCandidates(secret);
+  return users.some((userCandidate) => secrets.some((secretCandidate) => validUsers.get(userCandidate) === secretCandidate));
 };
 
 export const createFakeJwt = (subject: string): string => {

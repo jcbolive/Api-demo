@@ -101,6 +101,8 @@ Credencial única para qualquer teste:
 
 Sem essa credencial, endpoints protegidos retornam HTTP `401`.
 
+> Dica para Postman: se você importou versões antigas da Collection, apague headers duplicados `x-api-user`/`x-api-secret` ou reimporte a Collection atual. A API também tolera valores duplicados enviados como lista separada por vírgula, por exemplo quando ferramentas adicionam headers repetidos automaticamente.
+
 ### Token fake
 
 ```bash
