@@ -1,0 +1,26 @@
+{
+  "name": "Mock API Platform - Local",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8787",
+      "enabled": true
+    },
+    {
+      "key": "apiUser",
+      "value": "dealer_user",
+      "enabled": true
+    },
+    {
+      "key": "apiSecret",
+      "value": "dealer_secret",
+      "enabled": true
+    },
+    {
+      "key": "scenario",
+      "value": "success",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}
