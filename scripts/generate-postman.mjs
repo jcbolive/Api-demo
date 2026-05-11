@@ -4,7 +4,8 @@ const baseUrl = '{{baseUrl}}/api/v1';
 const headers = [
   { key: 'x-api-user', value: '{{apiUser}}' },
   { key: 'x-api-secret', value: '{{apiSecret}}' },
-  { key: 'content-type', value: 'application/json' }
+  { key: 'content-type', value: 'application/json' },
+  { key: 'Authorization', value: 'Bearer {{accessToken}}', disabled: true }
 ];
 
 const endpoints = [
@@ -53,6 +54,6 @@ for (const [folder, method, path, name, hasBody] of endpoints) {
   });
 }
 
-writeFileSync('postman/collection.json', `${JSON.stringify({ info: { name: 'Mock API Platform - Cloudflare Workers', schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json', description: 'Collection gerada a partir dos endpoints OpenAPI da plataforma mock.' }, item: [...groups.entries()].map(([name, item]) => ({ name, item })), variable: [{ key: 'baseUrl', value: 'http://localhost:8787' }, { key: 'apiUser', value: 'demo_user' }, { key: 'apiSecret', value: 'demo_secret' }] }, null, 2)}\n`);
-writeFileSync('postman/environment.json', `${JSON.stringify({ name: 'Mock API Platform - Local', values: [{ key: 'baseUrl', value: 'http://localhost:8787', enabled: true }, { key: 'apiUser', value: 'demo_user', enabled: true }, { key: 'apiSecret', value: 'demo_secret', enabled: true }, { key: 'scenario', value: 'success', enabled: true }], _postman_variable_scope: 'environment' }, null, 2)}\n`);
+writeFileSync('postman/collection.json', `${JSON.stringify({ info: { name: 'Mock API Platform - Cloudflare Workers', schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json', description: 'Collection gerada a partir dos endpoints OpenAPI da plataforma mock.' }, item: [...groups.entries()].map(([name, item]) => ({ name, item })), variable: [{ key: 'baseUrl', value: 'http://localhost:8787' }, { key: 'apiUser', value: 'demo_user' }, { key: 'apiSecret', value: 'demo_secret' }, { key: 'accessToken', value: '' }] }, null, 2)}\n`);
+writeFileSync('postman/environment.json', `${JSON.stringify({ name: 'Mock API Platform - Local', values: [{ key: 'baseUrl', value: 'http://localhost:8787', enabled: true }, { key: 'apiUser', value: 'demo_user', enabled: true }, { key: 'apiSecret', value: 'demo_secret', enabled: true }, { key: 'accessToken', value: '', enabled: true }, { key: 'scenario', value: 'success', enabled: true }], _postman_variable_scope: 'environment' }, null, 2)}\n`);
 console.log('Postman collection e environment gerados.');

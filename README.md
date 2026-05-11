@@ -120,6 +120,26 @@ curl -X POST http://localhost:8787/api/v1/auth/refresh \
   -d '{"subject":"demo_user"}'
 ```
 
+### Usar token nos endpoints protegidos
+
+Depois de gerar o token, envie-o no header `Authorization`:
+
+```bash
+curl http://localhost:8787/api/v1/clientes/cpf/12345678901 \
+  -H 'Authorization: Bearer SEU_ACCESS_TOKEN'
+```
+
+A API também continua aceitando a credencial direta por headers:
+
+```bash
+curl http://localhost:8787/api/v1/clientes/cpf/12345678901 \
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret'
+```
+
+Se você receber uma resposta simples como `{"error":"invalid_token"}` em vez do envelope padrão da API (`success`, `requestId`, `timestamp`), a requisição provavelmente foi bloqueada por uma camada externa como Cloudflare Access antes de chegar no Worker. Nesse caso, desative a proteção Access para essa rota ou use os headers `x-api-user`/`x-api-secret` em vez de `Authorization`.
+
+
 ## Cenários dinâmicos de mock
 
 Qualquer endpoint em `/api/v1` pode receber:

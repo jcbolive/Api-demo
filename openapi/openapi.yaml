@@ -9,6 +9,7 @@ servers:
   - url: http://localhost:8787/api/v1
     description: Wrangler local
 security:
+  - BearerAuth: []
   - ApiUser: []
     ApiSecret: []
 tags:
@@ -206,6 +207,7 @@ paths:
       responses: { '202': { $ref: '#/components/responses/Success' } }
 components:
   securitySchemes:
+    BearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
     ApiUser: { type: apiKey, in: header, name: x-api-user }
     ApiSecret: { type: apiKey, in: header, name: x-api-secret }
   parameters:

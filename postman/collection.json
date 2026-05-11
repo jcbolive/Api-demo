@@ -97,6 +97,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/auth/token",
@@ -148,6 +153,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/auth/refresh",
@@ -204,6 +214,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cpf/12345678901"
@@ -251,6 +266,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cli-001"
@@ -298,6 +318,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cli-001/contratos"
@@ -345,6 +370,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cli-001/planos"
@@ -392,6 +422,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cli-001/historico"
@@ -444,6 +479,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/contratos/ctr-001"
@@ -491,6 +531,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/contratos/ctr-001/financeiro"
@@ -538,6 +583,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/contratos/ctr-001/segunda-via"
@@ -590,6 +640,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/veiculos/placa/ABC1D23"
@@ -637,6 +692,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/veiculos/revisoes/datas-disponiveis?concessionaria=Paulista&periodo=manha&tipoRevisao=10000km"
@@ -684,6 +744,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/veiculos/revisoes/agendar",
@@ -740,6 +805,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/especialidades"
@@ -787,6 +857,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/especialidades/plano/pln-saude-plus"
@@ -834,6 +909,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/medicos/especialidade/esp-cardio"
@@ -881,6 +961,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/consultas/agendar",
@@ -932,6 +1017,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/consultas/datas-disponiveis?especialidade=esp-cardio&unidade=Hospital%20Central&periodo=manha&convenio=pln-saude-plus"
@@ -979,6 +1069,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/consultas/horarios-disponiveis?medico=med-001&data=2026-05-15"
@@ -1031,6 +1126,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/agendamentos/datas-disponiveis?unidade=Hospital%20Central&servico=Triagem&periodo=manha"
@@ -1078,6 +1178,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/agendamentos/horarios-disponiveis?unidade=Hospital%20Central&servico=Triagem&tempoMedioAtendimento=30"
@@ -1125,6 +1230,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/agendamentos",
@@ -1176,6 +1286,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/agendamentos/AGE-123"
@@ -1228,6 +1343,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/atendimentos/ATD-123/status"
@@ -1275,6 +1395,11 @@
               {
                 "key": "content-type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/notificacoes",
@@ -1325,6 +1450,10 @@
     {
       "key": "apiSecret",
       "value": "demo_secret"
+    },
+    {
+      "key": "accessToken",
+      "value": ""
     }
   ]
 }

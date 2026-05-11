@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import type { ApiEnv } from '../types/api';
-import { createFakeJwt, isValidCredential } from '../auth/users';
+import { createFakeJwt, getBearerToken, isValidCredential, validateFakeJwt } from '../auth/users';
 import { success, failure } from '../utils/response';
 
 export const authRoutes = new Hono<ApiEnv>()
@@ -13,6 +13,7 @@ export const authRoutes = new Hono<ApiEnv>()
   })
   .post('/refresh', async (c) => {
     const body = await c.req.json().catch(() => ({}));
-    const subject = body.subject ?? c.req.header('x-api-user') ?? 'demo_user';
+    const bearerValidation = validateFakeJwt(getBearerToken(c.req.header('authorization')));
+    const subject = body.subject ?? (bearerValidation.valid ? bearerValidation.subject : undefined) ?? c.req.header('x-api-user') ?? 'demo_user';
     return success(c, { accessToken: createFakeJwt(subject), tokenType: 'Bearer', expiresIn: 3600, refreshed: true });
   });
