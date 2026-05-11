@@ -1,10 +1,17 @@
-export const validUsers = new Map<string, string>([
-  ['dealer_user', 'dealer_secret'],
-  ['hospital_user', 'hospital_secret'],
-  ['services_user', 'services_secret']
-]);
+export const demoCredential = {
+  user: 'demo_user',
+  secret: 'demo_secret'
+} as const;
 
-export const isValidCredential = (user?: string, secret?: string): boolean => Boolean(user && secret && validUsers.get(user) === secret);
+export const validUsers = new Map<string, string>([[demoCredential.user, demoCredential.secret]]);
+
+const normalizeCredential = (value?: string): string | undefined => value?.trim();
+
+export const isValidCredential = (user?: string, secret?: string): boolean => {
+  const normalizedUser = normalizeCredential(user);
+  const normalizedSecret = normalizeCredential(secret);
+  return Boolean(normalizedUser && normalizedSecret && validUsers.get(normalizedUser) === normalizedSecret);
+};
 
 export const createFakeJwt = (subject: string): string => {
   const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));

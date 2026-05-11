@@ -102,7 +102,7 @@
             "url": "{{baseUrl}}/api/v1/auth/token",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"dealer_user\",\n  \"secret\": \"dealer_secret\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
             }
           },
           "response": [
@@ -153,7 +153,7 @@
             "url": "{{baseUrl}}/api/v1/auth/refresh",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"dealer_user\",\n  \"secret\": \"dealer_secret\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
             }
           },
           "response": [
@@ -689,7 +689,7 @@
             "url": "{{baseUrl}}/api/v1/veiculos/revisoes/agendar",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"dealer_user\",\n  \"secret\": \"dealer_secret\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
             }
           },
           "response": [
@@ -886,7 +886,7 @@
             "url": "{{baseUrl}}/api/v1/consultas/agendar",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"dealer_user\",\n  \"secret\": \"dealer_secret\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
             }
           },
           "response": [
@@ -1130,7 +1130,7 @@
             "url": "{{baseUrl}}/api/v1/agendamentos",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"dealer_user\",\n  \"secret\": \"dealer_secret\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
             }
           },
           "response": [
@@ -1280,7 +1280,7 @@
             "url": "{{baseUrl}}/api/v1/notificacoes",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"dealer_user\",\n  \"secret\": \"dealer_secret\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
             }
           },
           "response": [
@@ -1320,11 +1320,11 @@
     },
     {
       "key": "apiUser",
-      "value": "dealer_user"
+      "value": "demo_user"
     },
     {
       "key": "apiSecret",
-      "value": "dealer_secret"
+      "value": "demo_secret"
     }
   ]
 }

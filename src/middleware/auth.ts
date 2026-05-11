@@ -11,7 +11,7 @@ export const authMiddleware: MiddlewareHandler<ApiEnv> = async (c, next) => {
 
   const user = c.req.header('x-api-user');
   const secret = c.req.header('x-api-secret');
-  if (!isValidCredential(user, secret)) return failure(c, 'AUTH_INVALID', 'Credenciais inválidas. Envie x-api-user e x-api-secret válidos.', 401);
+  if (!isValidCredential(user, secret)) return failure(c, 'AUTH_INVALID', 'Credenciais inválidas. Use x-api-user=demo_user e x-api-secret=demo_secret.', 401);
   c.set('authUser', user);
   return next();
 };

@@ -8,12 +8,12 @@
     },
     {
       "key": "apiUser",
-      "value": "dealer_user",
+      "value": "demo_user",
       "enabled": true
     },
     {
       "key": "apiSecret",
-      "value": "dealer_secret",
+      "value": "demo_secret",
       "enabled": true
     },
     {

@@ -46,7 +46,7 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: { type: object, properties: { user: { type: string, example: dealer_user }, secret: { type: string, example: dealer_secret } } }
+            schema: { type: object, properties: { user: { type: string, example: demo_user }, secret: { type: string, example: demo_secret } } }
       responses:
         '200': { $ref: '#/components/responses/Success' }
         '401': { $ref: '#/components/responses/Unauthorized' }
@@ -209,8 +209,8 @@ components:
     ApiUser: { type: apiKey, in: header, name: x-api-user }
     ApiSecret: { type: apiKey, in: header, name: x-api-secret }
   parameters:
-    ApiUser: { name: x-api-user, in: header, required: true, schema: { type: string }, example: dealer_user }
-    ApiSecret: { name: x-api-secret, in: header, required: true, schema: { type: string }, example: dealer_secret }
+    ApiUser: { name: x-api-user, in: header, required: true, schema: { type: string }, example: demo_user }
+    ApiSecret: { name: x-api-secret, in: header, required: true, schema: { type: string }, example: demo_secret }
     Scenario: { name: scenario, in: query, required: false, schema: { type: string, enum: [success, empty, timeout, unavailable, error, slow] }, description: Força comportamento mockado. }
     Cpf: { name: cpf, in: path, required: true, schema: { type: string }, example: '12345678901' }
     ClienteId: { name: clienteId, in: path, required: true, schema: { type: string }, example: cli-001 }

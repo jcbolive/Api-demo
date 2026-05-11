@@ -89,27 +89,25 @@ A plataforma adiciona automaticamente:
 Envie os headers:
 
 ```text
-x-api-user: dealer_user
-x-api-secret: dealer_secret
+x-api-user: demo_user
+x-api-secret: demo_secret
 ```
 
-Usuários válidos:
+Credencial única para qualquer teste:
 
-| Usuário | Secret | Uso sugerido |
+| `x-api-user` | `x-api-secret` | Uso |
 |---|---|---|
-| `dealer_user` | `dealer_secret` | Concessionária |
-| `hospital_user` | `hospital_secret` | Saúde |
-| `services_user` | `services_secret` | Serviços |
+| `demo_user` | `demo_secret` | Todos os domínios: concessionária, saúde, serviços e atendimento |
 
-Sem credenciais válidas, endpoints protegidos retornam HTTP `401`.
+Sem essa credencial, endpoints protegidos retornam HTTP `401`.
 
 ### Token fake
 
 ```bash
 curl -X POST http://localhost:8787/api/v1/auth/token \
   -H 'content-type: application/json' \
-  -H 'x-api-user: dealer_user' \
-  -H 'x-api-secret: dealer_secret'
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret'
 ```
 
 ### Refresh fake
@@ -117,7 +115,7 @@ curl -X POST http://localhost:8787/api/v1/auth/token \
 ```bash
 curl -X POST http://localhost:8787/api/v1/auth/refresh \
   -H 'content-type: application/json' \
-  -d '{"subject":"dealer_user"}'
+  -d '{"subject":"demo_user"}'
 ```
 
 ## Cenários dinâmicos de mock
@@ -269,40 +267,40 @@ curl http://localhost:8787/api/v1/health
 
 ```bash
 curl http://localhost:8787/api/v1/clientes/cpf/12345678901 \
-  -H 'x-api-user: dealer_user' \
-  -H 'x-api-secret: dealer_secret'
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret'
 ```
 
 ### Cliente inexistente / retorno vazio
 
 ```bash
 curl 'http://localhost:8787/api/v1/clientes/cpf/00000000000?scenario=empty' \
-  -H 'x-api-user: services_user' \
-  -H 'x-api-secret: services_secret'
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret'
 ```
 
 ### Simular timeout
 
 ```bash
 curl 'http://localhost:8787/api/v1/contratos/ctr-001/financeiro?scenario=timeout' \
-  -H 'x-api-user: services_user' \
-  -H 'x-api-secret: services_secret'
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret'
 ```
 
 ### Segunda via
 
 ```bash
 curl http://localhost:8787/api/v1/contratos/ctr-001/segunda-via \
-  -H 'x-api-user: services_user' \
-  -H 'x-api-secret: services_secret'
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret'
 ```
 
 ### Datas disponíveis para revisão
 
 ```bash
 curl 'http://localhost:8787/api/v1/veiculos/revisoes/datas-disponiveis?concessionaria=Paulista&periodo=manha&tipoRevisao=10000km' \
-  -H 'x-api-user: dealer_user' \
-  -H 'x-api-secret: dealer_secret'
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret'
 ```
 
 ### Agendar consulta
@@ -310,8 +308,8 @@ curl 'http://localhost:8787/api/v1/veiculos/revisoes/datas-disponiveis?concessio
 ```bash
 curl -X POST http://localhost:8787/api/v1/consultas/agendar \
   -H 'content-type: application/json' \
-  -H 'x-api-user: hospital_user' \
-  -H 'x-api-secret: hospital_secret' \
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret' \
   -d '{"especialidadeId":"esp-cardio","medicoId":"med-001","unidade":"Hospital Central","data":"2026-05-15","horario":"09:30","convenio":"pln-saude-plus"}'
 ```
 
@@ -319,8 +317,8 @@ curl -X POST http://localhost:8787/api/v1/consultas/agendar \
 
 ```bash
 curl http://localhost:8787/api/v1/atendimentos/ATD-123/status \
-  -H 'x-api-user: services_user' \
-  -H 'x-api-secret: services_secret'
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret'
 ```
 
 ### Enviar notificação WhatsApp
@@ -328,8 +326,8 @@ curl http://localhost:8787/api/v1/atendimentos/ATD-123/status \
 ```bash
 curl -X POST http://localhost:8787/api/v1/notificacoes \
   -H 'content-type: application/json' \
-  -H 'x-api-user: services_user' \
-  -H 'x-api-secret: services_secret' \
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret' \
   -d '{"canal":"whatsapp","destino":"+5511999990001","mensagem":"Seu protocolo foi atualizado."}'
 ```
 
