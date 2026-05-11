@@ -23,7 +23,7 @@ declare module 'hono' {
     };
     res: Response;
     env: E extends { Bindings: infer B } ? B : Record<string, string | undefined>;
-    json<T>(body: T, status?: number): Response;
+    json<T>(body: T, status?: number, headers?: Record<string, string>): Response;
     text(body: string, status?: number, headers?: Record<string, string>): Response;
     html(body: string, status?: number, headers?: Record<string, string>): Response;
     header(name: string, value: string): void;

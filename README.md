@@ -333,6 +333,28 @@ curl -X POST http://localhost:8787/api/v1/notificacoes \
   -d '{"canal":"whatsapp","destino":"+5511999990001","mensagem":"Seu protocolo foi atualizado."}'
 ```
 
+
+## Como baixar documentação e collections online
+
+Use `/docs` para abrir a interface Swagger no navegador. Esse endpoint retorna HTML, então no Postman ele aparece como código HTML. Para baixar os arquivos de documentação/integração, use os endpoints diretos:
+
+| Arquivo | URL | Uso |
+|---|---|---|
+| OpenAPI YAML | `/openapi/openapi.yaml` | Importar no Swagger, Stoplight, Insomnia, Postman ou baixar a especificação |
+| Postman Collection | `/postman/collection.json` | Importar coleção no Postman |
+| Postman Environment | `/postman/environment.json` | Importar variáveis de ambiente no Postman |
+| Índice de downloads | `/docs/downloads` | Retorna JSON com todos os links disponíveis |
+
+Exemplos online:
+
+```bash
+curl -L https://SUA_URL/openapi/openapi.yaml -o openapi.yaml
+curl -L https://SUA_URL/postman/collection.json -o mock-api-platform.postman_collection.json
+curl -L https://SUA_URL/postman/environment.json -o mock-api-platform.postman_environment.json
+```
+
+No Postman, para visualizar a documentação interativa use o navegador em `https://SUA_URL/docs`; para importar a documentação, use `https://SUA_URL/openapi/openapi.yaml`.
+
 ## Postman
 
 Arquivos disponíveis:

@@ -9,6 +9,8 @@ import { requestIdMiddleware } from './middleware/request-id';
 import { applyScenario } from './utils/scenario';
 import { swagger } from './docs/swagger';
 import { openApiYaml } from './openapi/spec';
+import postmanCollection from '../postman/collection.json';
+import postmanEnvironment from '../postman/environment.json';
 import { agendamentosRoutes } from './routes/agendamentos';
 import { atendimentoRoutes } from './routes/atendimento';
 import { authRoutes } from './routes/auth';
@@ -28,7 +30,22 @@ app.use('/api/v1/*', authMiddleware);
 app.use('/api/v1/*', applyScenario);
 
 app.get('/docs', swagger);
-app.get('/openapi/openapi.yaml', (c) => c.text(openApiYaml, 200, { 'content-type': 'application/yaml; charset=utf-8' }));
+app.get('/openapi/openapi.yaml', (c) => c.text(openApiYaml, 200, {
+  'content-type': 'application/yaml; charset=utf-8',
+  'content-disposition': 'attachment; filename="openapi.yaml"'
+}));
+app.get('/postman/collection.json', (c) => c.json(postmanCollection, 200, {
+  'content-disposition': 'attachment; filename="mock-api-platform.postman_collection.json"'
+}));
+app.get('/postman/environment.json', (c) => c.json(postmanEnvironment, 200, {
+  'content-disposition': 'attachment; filename="mock-api-platform.postman_environment.json"'
+}));
+app.get('/docs/downloads', (c) => c.json({
+  openapi: '/openapi/openapi.yaml',
+  postmanCollection: '/postman/collection.json',
+  postmanEnvironment: '/postman/environment.json',
+  swaggerUi: '/docs'
+}));
 
 app.route('/api/v1', systemRoutes);
 app.route('/api/v1/auth', authRoutes);
