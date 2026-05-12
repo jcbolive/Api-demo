@@ -1,0 +1,1031 @@
+{
+  "info": {
+    "name": "Mock API Platform - Cloudflare Workers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Collection pública gerada para a plataforma mock sem autenticação."
+  },
+  "item": [
+    {
+      "name": "System",
+      "item": [
+        {
+          "name": "Health check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/health"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Versão da plataforma",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/version"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "Cliente por CPF",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/clientes/cpf/12345678901"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Cliente por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/clientes/cli-001"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Contratos do cliente",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/clientes/cli-001/contratos"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Planos do cliente",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/clientes/cli-001/planos"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Histórico omnichannel",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/clientes/cli-001/historico"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Contratos",
+      "item": [
+        {
+          "name": "Contrato por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/contratos/ctr-001"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Financeiro do contrato",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/contratos/ctr-001/financeiro"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Segunda via",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/contratos/ctr-001/segunda-via"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Veículos",
+      "item": [
+        {
+          "name": "Veículo por placa",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/veiculos/placa/ABC1D23"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Datas para revisão",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/veiculos/revisoes/datas-disponiveis?concessionaria=Paulista&periodo=manha&tipoRevisao=10000km"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Agendar revisão",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/veiculos/revisoes/agendar",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 201,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Saúde",
+      "item": [
+        {
+          "name": "Especialidades",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/especialidades"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Especialidades por plano",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/especialidades/plano/pln-saude-plus"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Médicos por especialidade",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/medicos/especialidade/esp-cardio"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Agendar consulta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/consultas/agendar",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 201,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Datas consulta",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/consultas/datas-disponiveis?especialidade=esp-cardio&unidade=Hospital%20Central&periodo=manha&convenio=pln-saude-plus"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Horários consulta",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/consultas/horarios-disponiveis?medico=med-001&data=2026-05-15"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Agendamentos",
+      "item": [
+        {
+          "name": "Datas disponíveis",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/agendamentos/datas-disponiveis?unidade=Hospital%20Central&servico=Triagem&periodo=manha"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Horários disponíveis",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/agendamentos/horarios-disponiveis?unidade=Hospital%20Central&servico=Triagem&tempoMedioAtendimento=30"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Criar agendamento",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/agendamentos",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 201,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Cancelar agendamento",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/agendamentos/AGE-123"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Atendimento",
+      "item": [
+        {
+          "name": "Status atendimento",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/atendimentos/ATD-123/status"
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Enviar notificação",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/notificacoes",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "sucesso",
+              "status": "OK",
+              "code": 201,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
+            },
+            {
+              "name": "erro",
+              "status": "Internal Server Error",
+              "code": 500,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
+            },
+            {
+              "name": "timeout",
+              "status": "Gateway Timeout",
+              "code": 504,
+              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
+            },
+            {
+              "name": "vazio",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8787"
+    }
+  ]
+}

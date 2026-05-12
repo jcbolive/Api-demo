@@ -1,0 +1,16 @@
+{
+  "name": "Mock API Platform - Local",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8787",
+      "enabled": true
+    },
+    {
+      "key": "scenario",
+      "value": "success",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}
