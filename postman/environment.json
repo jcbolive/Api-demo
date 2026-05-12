@@ -22,6 +22,16 @@
       "enabled": true
     },
     {
+      "key": "cfAccessClientId",
+      "value": "",
+      "enabled": false
+    },
+    {
+      "key": "cfAccessClientSecret",
+      "value": "",
+      "enabled": false
+    },
+    {
       "key": "scenario",
       "value": "success",
       "enabled": true

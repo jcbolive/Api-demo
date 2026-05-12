@@ -102,6 +102,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/auth/token",
@@ -157,6 +167,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -219,6 +239,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cpf/12345678901"
@@ -270,6 +300,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -323,6 +363,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cli-001/contratos"
@@ -375,6 +425,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cli-001/planos"
@@ -426,6 +486,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -484,6 +554,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/contratos/ctr-001"
@@ -536,6 +616,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/contratos/ctr-001/financeiro"
@@ -587,6 +677,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -645,6 +745,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/veiculos/placa/ABC1D23"
@@ -697,6 +807,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/veiculos/revisoes/datas-disponiveis?concessionaria=Paulista&periodo=manha&tipoRevisao=10000km"
@@ -748,6 +868,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -810,6 +940,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/especialidades"
@@ -861,6 +1001,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -914,6 +1064,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/medicos/especialidade/esp-cardio"
@@ -965,6 +1125,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -1022,6 +1192,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/consultas/datas-disponiveis?especialidade=esp-cardio&unidade=Hospital%20Central&periodo=manha&convenio=pln-saude-plus"
@@ -1073,6 +1253,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -1131,6 +1321,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/agendamentos/datas-disponiveis?unidade=Hospital%20Central&servico=Triagem&periodo=manha"
@@ -1183,6 +1383,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/agendamentos/horarios-disponiveis?unidade=Hospital%20Central&servico=Triagem&tempoMedioAtendimento=30"
@@ -1234,6 +1444,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -1290,6 +1510,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -1348,6 +1578,16 @@
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
                 "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
+                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/atendimentos/ATD-123/status"
@@ -1399,6 +1639,16 @@
               {
                 "key": "Authorization",
                 "value": "Bearer {{accessToken}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Id",
+                "value": "{{cfAccessClientId}}",
+                "disabled": true
+              },
+              {
+                "key": "CF-Access-Client-Secret",
+                "value": "{{cfAccessClientSecret}}",
                 "disabled": true
               }
             ],
@@ -1453,6 +1703,14 @@
     },
     {
       "key": "accessToken",
+      "value": ""
+    },
+    {
+      "key": "cfAccessClientId",
+      "value": ""
+    },
+    {
+      "key": "cfAccessClientSecret",
       "value": ""
     }
   ]

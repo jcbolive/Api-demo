@@ -139,6 +139,31 @@ curl http://localhost:8787/api/v1/clientes/cpf/12345678901 \
 
 Se você receber uma resposta simples como `{"error":"invalid_token"}` em vez do envelope padrão da API (`success`, `requestId`, `timestamp`), a requisição provavelmente foi bloqueada por uma camada externa como Cloudflare Access antes de chegar no Worker. Nesse caso, desative a proteção Access para essa rota ou use os headers `x-api-user`/`x-api-secret` em vez de `Authorization`.
 
+### Cloudflare Access / Zero Trust
+
+Se a resposta vier como HTML com título semelhante a **Entrar em Colaborador** ou uma página de login da Cloudflare, a chamada não chegou na Mock API. Isso significa que existe uma política do **Cloudflare Access / Zero Trust** protegendo o domínio ou o Worker antes do código executar.
+
+Para deixar a Mock API pública para demos, faça um destes ajustes no painel da Cloudflare:
+
+1. Acesse **Zero Trust > Access > Applications**.
+2. Encontre a aplicação associada a `apidemo.jcbolive.workers.dev` ou ao domínio customizado.
+3. Escolha uma opção:
+   - remover/desabilitar a aplicação Access para esse Worker; ou
+   - criar uma policy **Bypass** para os paths públicos da API, por exemplo `/api/v1/*`, `/docs`, `/openapi/*` e `/postman/*`; ou
+   - criar um **Service Token** e enviar também os headers `CF-Access-Client-Id` e `CF-Access-Client-Secret` nas chamadas do Postman.
+
+Exemplo com Service Token do Cloudflare Access:
+
+```bash
+curl https://apidemo.jcbolive.workers.dev/api/v1/clientes/cpf/12345678901 \
+  -H 'x-api-user: demo_user' \
+  -H 'x-api-secret: demo_secret' \
+  -H 'CF-Access-Client-Id: SEU_CLIENT_ID' \
+  -H 'CF-Access-Client-Secret: SEU_CLIENT_SECRET'
+```
+
+> Importante: headers `x-api-user`, `x-api-secret` e `Authorization` são validados pela Mock API. Headers `CF-Access-*` são validados antes pela Cloudflare. Se o Access bloquear, o Worker não consegue responder com o envelope padrão.
+
 
 ## Cenários dinâmicos de mock
 
