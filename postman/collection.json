@@ -2,7 +2,7 @@
   "info": {
     "name": "Mock API Platform - Cloudflare Workers",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Collection gerada a partir dos endpoints OpenAPI da plataforma mock."
+    "description": "Collection pública gerada para a plataforma mock sem autenticação."
   },
   "item": [
     {
@@ -79,143 +79,6 @@
       ]
     },
     {
-      "name": "Auth",
-      "item": [
-        {
-          "name": "Emitir JWT fake",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
-                "key": "content-type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
-              }
-            ],
-            "url": "{{baseUrl}}/api/v1/auth/token",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
-            }
-          },
-          "response": [
-            {
-              "name": "sucesso",
-              "status": "OK",
-              "code": 201,
-              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
-            },
-            {
-              "name": "erro",
-              "status": "Internal Server Error",
-              "code": 500,
-              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
-            },
-            {
-              "name": "timeout",
-              "status": "Gateway Timeout",
-              "code": 504,
-              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
-            },
-            {
-              "name": "vazio",
-              "status": "OK",
-              "code": 200,
-              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
-            }
-          ]
-        },
-        {
-          "name": "Renovar JWT fake",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
-                "key": "content-type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
-              }
-            ],
-            "url": "{{baseUrl}}/api/v1/auth/refresh",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
-            }
-          },
-          "response": [
-            {
-              "name": "sucesso",
-              "status": "OK",
-              "code": 201,
-              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": {}\n}"
-            },
-            {
-              "name": "erro",
-              "status": "Internal Server Error",
-              "code": 500,
-              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"INTEGRATION_ERROR\",\n    \"message\": \"Erro simulado de integração enterprise.\"\n  }\n}"
-            },
-            {
-              "name": "timeout",
-              "status": "Gateway Timeout",
-              "code": 504,
-              "body": "{\n  \"success\": false,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"error\": {\n    \"code\": \"TIMEOUT\",\n    \"message\": \"Tempo limite simulado ao consultar backend legado.\"\n  }\n}"
-            },
-            {
-              "name": "vazio",
-              "status": "OK",
-              "code": 200,
-              "body": "{\n  \"success\": true,\n  \"requestId\": \"REQ-123456\",\n  \"timestamp\": \"2026-05-09T14:00:00Z\",\n  \"data\": []\n}"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Clientes",
       "item": [
         {
@@ -224,31 +87,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cpf/12345678901"
@@ -286,31 +126,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cli-001"
@@ -348,31 +165,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cli-001/contratos"
@@ -410,31 +204,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cli-001/planos"
@@ -472,31 +243,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/clientes/cli-001/historico"
@@ -539,31 +287,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/contratos/ctr-001"
@@ -601,31 +326,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/contratos/ctr-001/financeiro"
@@ -663,31 +365,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/contratos/ctr-001/segunda-via"
@@ -730,31 +409,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/veiculos/placa/ABC1D23"
@@ -792,31 +448,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/veiculos/revisoes/datas-disponiveis?concessionaria=Paulista&periodo=manha&tipoRevisao=10000km"
@@ -854,37 +487,14 @@
             "method": "POST",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/veiculos/revisoes/agendar",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
             }
           },
           "response": [
@@ -925,31 +535,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/especialidades"
@@ -987,31 +574,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/especialidades/plano/pln-saude-plus"
@@ -1049,31 +613,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/medicos/especialidade/esp-cardio"
@@ -1111,37 +652,14 @@
             "method": "POST",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/consultas/agendar",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
             }
           },
           "response": [
@@ -1177,31 +695,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/consultas/datas-disponiveis?especialidade=esp-cardio&unidade=Hospital%20Central&periodo=manha&convenio=pln-saude-plus"
@@ -1239,31 +734,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/consultas/horarios-disponiveis?medico=med-001&data=2026-05-15"
@@ -1306,31 +778,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/agendamentos/datas-disponiveis?unidade=Hospital%20Central&servico=Triagem&periodo=manha"
@@ -1368,31 +817,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/agendamentos/horarios-disponiveis?unidade=Hospital%20Central&servico=Triagem&tempoMedioAtendimento=30"
@@ -1430,37 +856,14 @@
             "method": "POST",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/agendamentos",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
             }
           },
           "response": [
@@ -1496,31 +899,8 @@
             "method": "DELETE",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/agendamentos/AGE-123"
@@ -1563,31 +943,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/atendimentos/ATD-123/status"
@@ -1625,37 +982,14 @@
             "method": "POST",
             "header": [
               {
-                "key": "x-api-user",
-                "value": "{{apiUser}}"
-              },
-              {
-                "key": "x-api-secret",
-                "value": "{{apiSecret}}"
-              },
-              {
                 "key": "content-type",
                 "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{accessToken}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Id",
-                "value": "{{cfAccessClientId}}",
-                "disabled": true
-              },
-              {
-                "key": "CF-Access-Client-Secret",
-                "value": "{{cfAccessClientSecret}}",
-                "disabled": true
               }
             ],
             "url": "{{baseUrl}}/api/v1/notificacoes",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\",\n  \"user\": \"demo_user\",\n  \"secret\": \"demo_secret\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
             }
           },
           "response": [
@@ -1692,26 +1026,6 @@
     {
       "key": "baseUrl",
       "value": "http://localhost:8787"
-    },
-    {
-      "key": "apiUser",
-      "value": "demo_user"
-    },
-    {
-      "key": "apiSecret",
-      "value": "demo_secret"
-    },
-    {
-      "key": "accessToken",
-      "value": ""
-    },
-    {
-      "key": "cfAccessClientId",
-      "value": ""
-    },
-    {
-      "key": "cfAccessClientSecret",
-      "value": ""
     }
   ]
 }

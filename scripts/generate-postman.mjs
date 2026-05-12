@@ -2,19 +2,12 @@ import { writeFileSync } from 'node:fs';
 
 const baseUrl = '{{baseUrl}}/api/v1';
 const headers = [
-  { key: 'x-api-user', value: '{{apiUser}}' },
-  { key: 'x-api-secret', value: '{{apiSecret}}' },
-  { key: 'content-type', value: 'application/json' },
-  { key: 'Authorization', value: 'Bearer {{accessToken}}', disabled: true },
-  { key: 'CF-Access-Client-Id', value: '{{cfAccessClientId}}', disabled: true },
-  { key: 'CF-Access-Client-Secret', value: '{{cfAccessClientSecret}}', disabled: true }
+  { key: 'content-type', value: 'application/json' }
 ];
 
 const endpoints = [
   ['System', 'GET', '/health', 'Health check', false],
   ['System', 'GET', '/version', 'Versão da plataforma', false],
-  ['Auth', 'POST', '/auth/token', 'Emitir JWT fake', true],
-  ['Auth', 'POST', '/auth/refresh', 'Renovar JWT fake', true],
   ['Clientes', 'GET', '/clientes/cpf/12345678901', 'Cliente por CPF', false],
   ['Clientes', 'GET', '/clientes/cli-001', 'Cliente por ID', false],
   ['Clientes', 'GET', '/clientes/cli-001/contratos', 'Contratos do cliente', false],
@@ -40,7 +33,7 @@ const endpoints = [
   ['Atendimento', 'POST', '/notificacoes', 'Enviar notificação', true]
 ];
 
-const body = JSON.stringify({ unidade: 'Hospital Central', servico: 'Consulta Cardiologia', data: '2026-05-15', horario: '09:30', canal: 'whatsapp', destino: '+5511999990001', mensagem: 'Sua solicitação foi confirmada.', user: 'demo_user', secret: 'demo_secret' }, null, 2);
+const body = JSON.stringify({ unidade: 'Hospital Central', servico: 'Consulta Cardiologia', data: '2026-05-15', horario: '09:30', canal: 'whatsapp', destino: '+5511999990001', mensagem: 'Sua solicitação foi confirmada.' }, null, 2);
 const groups = new Map();
 for (const [folder, method, path, name, hasBody] of endpoints) {
   if (!groups.has(folder)) groups.set(folder, []);
@@ -56,6 +49,6 @@ for (const [folder, method, path, name, hasBody] of endpoints) {
   });
 }
 
-writeFileSync('postman/collection.json', `${JSON.stringify({ info: { name: 'Mock API Platform - Cloudflare Workers', schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json', description: 'Collection gerada a partir dos endpoints OpenAPI da plataforma mock.' }, item: [...groups.entries()].map(([name, item]) => ({ name, item })), variable: [{ key: 'baseUrl', value: 'http://localhost:8787' }, { key: 'apiUser', value: 'demo_user' }, { key: 'apiSecret', value: 'demo_secret' }, { key: 'accessToken', value: '' }, { key: 'cfAccessClientId', value: '' }, { key: 'cfAccessClientSecret', value: '' }] }, null, 2)}\n`);
-writeFileSync('postman/environment.json', `${JSON.stringify({ name: 'Mock API Platform - Local', values: [{ key: 'baseUrl', value: 'http://localhost:8787', enabled: true }, { key: 'apiUser', value: 'demo_user', enabled: true }, { key: 'apiSecret', value: 'demo_secret', enabled: true }, { key: 'accessToken', value: '', enabled: true }, { key: 'cfAccessClientId', value: '', enabled: false }, { key: 'cfAccessClientSecret', value: '', enabled: false }, { key: 'scenario', value: 'success', enabled: true }], _postman_variable_scope: 'environment' }, null, 2)}\n`);
+writeFileSync('postman/collection.json', `${JSON.stringify({ info: { name: 'Mock API Platform - Cloudflare Workers', schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json', description: 'Collection pública gerada para a plataforma mock sem autenticação.' }, item: [...groups.entries()].map(([name, item]) => ({ name, item })), variable: [{ key: 'baseUrl', value: 'http://localhost:8787' }] }, null, 2)}\n`);
+writeFileSync('postman/environment.json', `${JSON.stringify({ name: 'Mock API Platform - Local', values: [{ key: 'baseUrl', value: 'http://localhost:8787', enabled: true }, { key: 'scenario', value: 'success', enabled: true }], _postman_variable_scope: 'environment' }, null, 2)}\n`);
 console.log('Postman collection e environment gerados.');

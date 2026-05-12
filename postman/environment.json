@@ -7,31 +7,6 @@
       "enabled": true
     },
     {
-      "key": "apiUser",
-      "value": "demo_user",
-      "enabled": true
-    },
-    {
-      "key": "apiSecret",
-      "value": "demo_secret",
-      "enabled": true
-    },
-    {
-      "key": "accessToken",
-      "value": "",
-      "enabled": true
-    },
-    {
-      "key": "cfAccessClientId",
-      "value": "",
-      "enabled": false
-    },
-    {
-      "key": "cfAccessClientSecret",
-      "value": "",
-      "enabled": false
-    },
-    {
       "key": "scenario",
       "value": "success",
       "enabled": true

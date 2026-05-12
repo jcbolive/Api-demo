@@ -6,12 +6,10 @@ export type ApiEnv = {
   Variables: {
     requestId: string;
     startedAt: number;
-    authUser?: string;
   };
 };
 
 export type ApiErrorCode =
-  | 'AUTH_INVALID'
   | 'NOT_FOUND'
   | 'VALIDATION_ERROR'
   | 'TIMEOUT'

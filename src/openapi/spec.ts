@@ -8,13 +8,8 @@ servers:
     description: Cloudflare Workers demo
   - url: http://localhost:8787/api/v1
     description: Wrangler local
-security:
-  - BearerAuth: []
-  - ApiUser: []
-    ApiSecret: []
 tags:
   - name: System
-  - name: Auth
   - name: Clientes
   - name: Contratos
   - name: Veículos
@@ -36,28 +31,6 @@ paths:
       summary: Versão da plataforma
       responses:
         '200': { $ref: '#/components/responses/Success' }
-  /auth/token:
-    post:
-      tags: [Auth]
-      security: []
-      summary: Emite JWT fake usando x-api-user e x-api-secret
-      parameters:
-        - $ref: '#/components/parameters/ApiUser'
-        - $ref: '#/components/parameters/ApiSecret'
-      requestBody:
-        content:
-          application/json:
-            schema: { type: object, properties: { user: { type: string, example: demo_user }, secret: { type: string, example: demo_secret } } }
-      responses:
-        '200': { $ref: '#/components/responses/Success' }
-        '401': { $ref: '#/components/responses/Unauthorized' }
-  /auth/refresh:
-    post:
-      tags: [Auth]
-      security: []
-      summary: Renova token fake
-      responses:
-        '200': { $ref: '#/components/responses/Success' }
   /clientes/cpf/{cpf}:
     get:
       tags: [Clientes]
@@ -67,7 +40,6 @@ paths:
         - $ref: '#/components/parameters/Scenario'
       responses:
         '200': { $ref: '#/components/responses/Success' }
-        '401': { $ref: '#/components/responses/Unauthorized' }
         '504': { $ref: '#/components/responses/Timeout' }
   /clientes/{clienteId}:
     get:
@@ -206,13 +178,7 @@ paths:
             schema: { type: object, properties: { canal: { type: string, enum: [whatsapp, sms, email, push] }, destino: { type: string }, mensagem: { type: string } } }
       responses: { '202': { $ref: '#/components/responses/Success' } }
 components:
-  securitySchemes:
-    BearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
-    ApiUser: { type: apiKey, in: header, name: x-api-user }
-    ApiSecret: { type: apiKey, in: header, name: x-api-secret }
   parameters:
-    ApiUser: { name: x-api-user, in: header, required: true, schema: { type: string }, example: demo_user }
-    ApiSecret: { name: x-api-secret, in: header, required: true, schema: { type: string }, example: demo_secret }
     Scenario: { name: scenario, in: query, required: false, schema: { type: string, enum: [success, empty, timeout, unavailable, error, slow] }, description: Força comportamento mockado. }
     Cpf: { name: cpf, in: path, required: true, schema: { type: string }, example: '12345678901' }
     ClienteId: { name: clienteId, in: path, required: true, schema: { type: string }, example: cli-001 }
@@ -237,7 +203,6 @@ components:
           examples:
             sucesso: { value: { success: true, requestId: REQ-123456, timestamp: '2026-05-09T14:00:00Z', data: {} } }
             vazio: { value: { success: true, requestId: REQ-123456, timestamp: '2026-05-09T14:00:00Z', data: [] } }
-    Unauthorized: { description: Não autenticado, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorEnvelope' } } } }
     NotFound: { description: Não encontrado, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorEnvelope' } } } }
     Conflict: { description: Conflito de agenda, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorEnvelope' } } } }
     Timeout: { description: Timeout simulado, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorEnvelope' } } } }
@@ -263,7 +228,7 @@ components:
           type: object
           required: [code, message]
           properties:
-            code: { type: string, example: AUTH_INVALID }
+            code: { type: string, example: INTERNAL_ERROR }
             message: { type: string, example: Descrição do erro }
             details: { type: object }
     Pagination:

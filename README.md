@@ -33,9 +33,8 @@ OpenAPI:
 
 ```text
 src/
-├── auth/          # credenciais fake e JWT fake
 ├── docs/          # Swagger UI
-├── middleware/    # auth, delay, log, erro, requestId
+├── middleware/    # delay, log, erro, requestId
 ├── mocks/         # massa fake consistente
 ├── openapi/       # spec embutida para servir no Worker
 ├── routes/        # rotas separadas por domínio
@@ -84,85 +83,23 @@ A plataforma adiciona automaticamente:
 - headers padrão (`content-type`, `x-request-id`, `x-api-platform`).
 - CORS liberado para demos e testes frontend.
 
-## Autenticação fake
+## Acesso público para demos
 
-Envie os headers:
+A plataforma agora é **100% pública para fins de demonstração**. Nenhum endpoint exige `x-api-user`, `x-api-secret`, `Authorization` ou token JWT.
 
-```text
-x-api-user: demo_user
-x-api-secret: demo_secret
-```
+Isso evita bloqueios em Postman, frontends, bots, Zendesk, Cognigy, AWS Connect e copilots durante POCs. Basta chamar a URL do endpoint.
 
-Credencial única para qualquer teste:
-
-| `x-api-user` | `x-api-secret` | Uso |
-|---|---|---|
-| `demo_user` | `demo_secret` | Todos os domínios: concessionária, saúde, serviços e atendimento |
-
-Sem essa credencial, endpoints protegidos retornam HTTP `401`.
-
-> Dica para Postman: se você importou versões antigas da Collection, apague headers duplicados `x-api-user`/`x-api-secret` ou reimporte a Collection atual. A API também tolera valores duplicados enviados como lista separada por vírgula, por exemplo quando ferramentas adicionam headers repetidos automaticamente.
-
-### Token fake
+Exemplo:
 
 ```bash
-curl -X POST http://localhost:8787/api/v1/auth/token \
-  -H 'content-type: application/json' \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret'
+curl http://localhost:8787/api/v1/clientes/cpf/12345678901
 ```
-
-### Refresh fake
-
-```bash
-curl -X POST http://localhost:8787/api/v1/auth/refresh \
-  -H 'content-type: application/json' \
-  -d '{"subject":"demo_user"}'
-```
-
-### Usar token nos endpoints protegidos
-
-Depois de gerar o token, envie-o no header `Authorization`:
-
-```bash
-curl http://localhost:8787/api/v1/clientes/cpf/12345678901 \
-  -H 'Authorization: Bearer SEU_ACCESS_TOKEN'
-```
-
-A API também continua aceitando a credencial direta por headers:
-
-```bash
-curl http://localhost:8787/api/v1/clientes/cpf/12345678901 \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret'
-```
-
-Se você receber uma resposta simples como `{"error":"invalid_token"}` em vez do envelope padrão da API (`success`, `requestId`, `timestamp`), a requisição provavelmente foi bloqueada por uma camada externa como Cloudflare Access antes de chegar no Worker. Nesse caso, desative a proteção Access para essa rota ou use os headers `x-api-user`/`x-api-secret` em vez de `Authorization`.
 
 ### Cloudflare Access / Zero Trust
 
-Se a resposta vier como HTML com título semelhante a **Entrar em Colaborador** ou uma página de login da Cloudflare, a chamada não chegou na Mock API. Isso significa que existe uma política do **Cloudflare Access / Zero Trust** protegendo o domínio ou o Worker antes do código executar.
+Se a resposta vier como HTML com título semelhante a **Entrar em Colaborador** ou uma página de login da Cloudflare, a chamada não chegou na Mock API. Isso significa que existe uma política externa do **Cloudflare Access / Zero Trust** protegendo o domínio antes do Worker executar.
 
-Para deixar a Mock API pública para demos, faça um destes ajustes no painel da Cloudflare:
-
-1. Acesse **Zero Trust > Access > Applications**.
-2. Encontre a aplicação associada a `apidemo.jcbolive.workers.dev` ou ao domínio customizado.
-3. Escolha uma opção:
-   - remover/desabilitar a aplicação Access para esse Worker; ou
-   - criar uma policy **Bypass** para os paths públicos da API, por exemplo `/api/v1/*`, `/docs`, `/openapi/*` e `/postman/*`; ou
-   - criar um **Service Token** e enviar também os headers `CF-Access-Client-Id` e `CF-Access-Client-Secret` nas chamadas do Postman.
-
-Exemplo com Service Token do Cloudflare Access:
-
-```bash
-curl https://apidemo.jcbolive.workers.dev/api/v1/clientes/cpf/12345678901 \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret' \
-  -H 'CF-Access-Client-Id: SEU_CLIENT_ID' \
-  -H 'CF-Access-Client-Secret: SEU_CLIENT_SECRET'
-```
-
-> Importante: headers `x-api-user`, `x-api-secret` e `Authorization` são validados pela Mock API. Headers `CF-Access-*` são validados antes pela Cloudflare. Se o Access bloquear, o Worker não consegue responder com o envelope padrão.
+Para deixar a Mock API pública para demos, remova/desabilite essa aplicação Access ou crie uma policy **Bypass** para `/api/v1/*`, `/docs`, `/openapi/*` e `/postman/*`.
 
 
 ## Cenários dinâmicos de mock
@@ -313,41 +250,31 @@ curl http://localhost:8787/api/v1/health
 ### Cliente com múltiplos contratos
 
 ```bash
-curl http://localhost:8787/api/v1/clientes/cpf/12345678901 \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret'
+curl http://localhost:8787/api/v1/clientes/cpf/12345678901
 ```
 
 ### Cliente inexistente / retorno vazio
 
 ```bash
-curl 'http://localhost:8787/api/v1/clientes/cpf/00000000000?scenario=empty' \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret'
+curl 'http://localhost:8787/api/v1/clientes/cpf/00000000000?scenario=empty'
 ```
 
 ### Simular timeout
 
 ```bash
-curl 'http://localhost:8787/api/v1/contratos/ctr-001/financeiro?scenario=timeout' \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret'
+curl 'http://localhost:8787/api/v1/contratos/ctr-001/financeiro?scenario=timeout'
 ```
 
 ### Segunda via
 
 ```bash
-curl http://localhost:8787/api/v1/contratos/ctr-001/segunda-via \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret'
+curl http://localhost:8787/api/v1/contratos/ctr-001/segunda-via
 ```
 
 ### Datas disponíveis para revisão
 
 ```bash
-curl 'http://localhost:8787/api/v1/veiculos/revisoes/datas-disponiveis?concessionaria=Paulista&periodo=manha&tipoRevisao=10000km' \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret'
+curl 'http://localhost:8787/api/v1/veiculos/revisoes/datas-disponiveis?concessionaria=Paulista&periodo=manha&tipoRevisao=10000km'
 ```
 
 ### Agendar consulta
@@ -355,17 +282,13 @@ curl 'http://localhost:8787/api/v1/veiculos/revisoes/datas-disponiveis?concessio
 ```bash
 curl -X POST http://localhost:8787/api/v1/consultas/agendar \
   -H 'content-type: application/json' \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret' \
   -d '{"especialidadeId":"esp-cardio","medicoId":"med-001","unidade":"Hospital Central","data":"2026-05-15","horario":"09:30","convenio":"pln-saude-plus"}'
 ```
 
 ### Status de atendimento omnichannel
 
 ```bash
-curl http://localhost:8787/api/v1/atendimentos/ATD-123/status \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret'
+curl http://localhost:8787/api/v1/atendimentos/ATD-123/status
 ```
 
 ### Enviar notificação WhatsApp
@@ -373,8 +296,6 @@ curl http://localhost:8787/api/v1/atendimentos/ATD-123/status \
 ```bash
 curl -X POST http://localhost:8787/api/v1/notificacoes \
   -H 'content-type: application/json' \
-  -H 'x-api-user: demo_user' \
-  -H 'x-api-secret: demo_secret' \
   -d '{"canal":"whatsapp","destino":"+5511999990001","mensagem":"Seu protocolo foi atualizado."}'
 ```
 

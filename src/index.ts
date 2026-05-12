@@ -1,7 +1,6 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import type { ApiEnv } from './types/api';
-import { authMiddleware } from './middleware/auth';
 import { delayMiddleware } from './middleware/delay';
 import { errorHandler, notFoundHandler } from './middleware/error';
 import { loggerMiddleware } from './middleware/logger';
@@ -13,7 +12,6 @@ import postmanCollection from '../postman/collection.json';
 import postmanEnvironment from '../postman/environment.json';
 import { agendamentosRoutes } from './routes/agendamentos';
 import { atendimentoRoutes } from './routes/atendimento';
-import { authRoutes } from './routes/auth';
 import { clientesRoutes } from './routes/clientes';
 import { contratosRoutes } from './routes/contratos';
 import { saudeRoutes } from './routes/saude';
@@ -22,11 +20,10 @@ import { veiculosRoutes } from './routes/veiculos';
 
 const app = new Hono<ApiEnv>();
 
-app.use('*', cors({ origin: '*', allowHeaders: ['content-type', 'authorization', 'x-api-user', 'x-api-secret', 'x-request-id', 'x-mock-scenario', 'x-mock-delay-ms'], allowMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'] }));
+app.use('*', cors({ origin: '*', allowHeaders: ['content-type', 'x-request-id', 'x-mock-scenario', 'x-mock-delay-ms'], allowMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'] }));
 app.use('*', requestIdMiddleware);
 app.use('*', loggerMiddleware);
 app.use('/api/v1/*', delayMiddleware);
-app.use('/api/v1/*', authMiddleware);
 app.use('/api/v1/*', applyScenario);
 
 app.get('/docs', swagger);
@@ -48,7 +45,6 @@ app.get('/docs/downloads', (c) => c.json({
 }));
 
 app.route('/api/v1', systemRoutes);
-app.route('/api/v1/auth', authRoutes);
 app.route('/api/v1/clientes', clientesRoutes);
 app.route('/api/v1/contratos', contratosRoutes);
 app.route('/api/v1/veiculos', veiculosRoutes);
