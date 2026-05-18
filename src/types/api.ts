@@ -6,6 +6,7 @@ export type ApiEnv = {
   Variables: {
     requestId: string;
     startedAt: number;
+    authUser?: string;
   };
 };
 
@@ -17,7 +18,8 @@ export type ApiErrorCode =
   | 'INTEGRATION_ERROR'
   | 'INTERNAL_ERROR'
   | 'SCHEDULE_FULL'
-  | 'SCHEDULE_CONFLICT';
+  | 'SCHEDULE_CONFLICT'
+  | 'AUTH_INVALID';
 
 export type SuccessEnvelope<T> = {
   success: true;
@@ -40,3 +42,4 @@ export type ErrorEnvelope = {
 
 export type Channel = 'whatsapp' | 'sms' | 'email' | 'push' | 'chat' | 'voice' | 'zendesk' | 'aws-connect' | 'cognigy';
 export type Scenario = 'success' | 'empty' | 'timeout' | 'unavailable' | 'error' | 'slow';
+export type AppointmentScenario = 'sucesso' | 'agenda_cheia' | 'conflito_horario' | 'indisponibilidade';

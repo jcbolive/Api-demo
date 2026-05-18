@@ -104,7 +104,7 @@ Para deixar a Mock API pública para demos, remova/desabilite essa aplicação A
 
 ## Cenários dinâmicos de mock
 
-Qualquer endpoint em `/api/v1` pode receber:
+Qualquer endpoint em `/api/v1` pode receber cenários técnicos via query string:
 
 ```text
 ?scenario=success|empty|timeout|unavailable|error|slow
@@ -130,6 +130,25 @@ Também é possível controlar delay:
 ```text
 x-mock-delay-ms: 1000
 ```
+
+### Cenários de agendamento por atributo
+
+Nos endpoints de criação de agendamento, o resultado agora é controlado por atributo no JSON enviado, em vez de tentativa randômica. Isso deixa as demos e testes reproduzíveis.
+
+Endpoints com esse controle:
+
+- `POST /api/v1/agendamentos`
+- `POST /api/v1/consultas/agendar`
+- `POST /api/v1/veiculos/revisoes/agendar`
+
+Use um dos atributos `cenario`, `scenario`, `resultado` ou `mockScenario` com os valores:
+
+- `sucesso`: cria o agendamento normalmente.
+- `agenda_cheia`: retorna HTTP `409` com `SCHEDULE_FULL`.
+- `conflito_horario`: retorna HTTP `409` com `SCHEDULE_CONFLICT`.
+- `indisponibilidade`: retorna HTTP `503` com `BACKEND_UNAVAILABLE`.
+
+Quando nenhum atributo é enviado, o padrão é `sucesso`.
 
 ## Instalação
 
@@ -282,7 +301,15 @@ curl 'http://localhost:8787/api/v1/veiculos/revisoes/datas-disponiveis?concessio
 ```bash
 curl -X POST http://localhost:8787/api/v1/consultas/agendar \
   -H 'content-type: application/json' \
-  -d '{"especialidadeId":"esp-cardio","medicoId":"med-001","unidade":"Hospital Central","data":"2026-05-15","horario":"09:30","convenio":"pln-saude-plus"}'
+  -d '{"especialidadeId":"esp-cardio","medicoId":"med-001","unidade":"Hospital Central","data":"2026-05-15","horario":"09:30","convenio":"pln-saude-plus","cenario":"sucesso"}'
+```
+
+### Agendar consulta com agenda cheia
+
+```bash
+curl -X POST http://localhost:8787/api/v1/consultas/agendar \
+  -H 'content-type: application/json' \
+  -d '{"especialidadeId":"esp-cardio","medicoId":"med-001","unidade":"Hospital Central","data":"2026-05-15","horario":"09:30","convenio":"pln-saude-plus","cenario":"agenda_cheia"}'
 ```
 
 ### Status de atendimento omnichannel

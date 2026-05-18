@@ -14,7 +14,7 @@ export const saudeRoutes = new Hono<ApiEnv>()
   .get('/consultas/horarios-disponiveis', (c) => success(c, { filtros: queryParams(c.req.url), horarios: horariosDisponiveis() }))
   .post('/consultas/agendar', async (c) => {
     const payload = await c.req.json().catch(() => ({}));
-    const resultado = agendamentoResultado();
+    const resultado = agendamentoResultado(payload);
     if (resultado === 'agenda_cheia') return failure(c, 'SCHEDULE_FULL', 'Não há vagas para consulta no período solicitado.', 409);
     if (resultado === 'conflito_horario') return failure(c, 'SCHEDULE_CONFLICT', 'Conflito de horário detectado para o médico selecionado.', 409);
     if (resultado === 'indisponibilidade') return failure(c, 'BACKEND_UNAVAILABLE', 'Sistema hospitalar momentaneamente indisponível.', 503);

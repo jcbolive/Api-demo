@@ -33,7 +33,7 @@ const endpoints = [
   ['Atendimento', 'POST', '/notificacoes', 'Enviar notificação', true]
 ];
 
-const body = JSON.stringify({ unidade: 'Hospital Central', servico: 'Consulta Cardiologia', data: '2026-05-15', horario: '09:30', canal: 'whatsapp', destino: '+5511999990001', mensagem: 'Sua solicitação foi confirmada.' }, null, 2);
+const body = JSON.stringify({ unidade: 'Hospital Central', servico: 'Consulta Cardiologia', data: '2026-05-15', horario: '09:30', cenario: '{{cenarioAgendamento}}', canal: 'whatsapp', destino: '+5511999990001', mensagem: 'Sua solicitação foi confirmada.' }, null, 2);
 const groups = new Map();
 for (const [folder, method, path, name, hasBody] of endpoints) {
   if (!groups.has(folder)) groups.set(folder, []);
@@ -50,5 +50,5 @@ for (const [folder, method, path, name, hasBody] of endpoints) {
 }
 
 writeFileSync('postman/collection.json', `${JSON.stringify({ info: { name: 'Mock API Platform - Cloudflare Workers', schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json', description: 'Collection pública gerada para a plataforma mock sem autenticação.' }, item: [...groups.entries()].map(([name, item]) => ({ name, item })), variable: [{ key: 'baseUrl', value: 'http://localhost:8787' }] }, null, 2)}\n`);
-writeFileSync('postman/environment.json', `${JSON.stringify({ name: 'Mock API Platform - Local', values: [{ key: 'baseUrl', value: 'http://localhost:8787', enabled: true }, { key: 'scenario', value: 'success', enabled: true }], _postman_variable_scope: 'environment' }, null, 2)}\n`);
+writeFileSync('postman/environment.json', `${JSON.stringify({ name: 'Mock API Platform - Local', values: [{ key: 'baseUrl', value: 'http://localhost:8787', enabled: true }, { key: 'scenario', value: 'success', enabled: true }, { key: 'cenarioAgendamento', value: 'sucesso', enabled: true }], _postman_variable_scope: 'environment' }, null, 2)}\n`);
 console.log('Postman collection e environment gerados.');

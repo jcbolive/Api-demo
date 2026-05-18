@@ -1,5 +1,5 @@
 import type { Context } from 'hono';
-import type { ApiEnv } from '../types/api';
+import type { ApiEnv, AppointmentScenario } from '../types/api';
 import { pick, randomInt, futureDate, dateTime, protocol } from '../utils/random';
 import { contratos } from '../mocks/data';
 
@@ -25,7 +25,17 @@ export const datasDisponiveis = (count = 6) => Array.from({ length: count }, (_,
 
 export const horariosDisponiveis = () => ['08:00', '09:30', '11:00', '14:00', '15:30', '17:00'].map((hora) => ({ hora, disponivel: Math.random() > 0.25 }));
 
-export const agendamentoResultado = () => pick(['sucesso', 'agenda_cheia', 'conflito_horario', 'indisponibilidade'] as const);
+const appointmentScenarios = ['sucesso', 'agenda_cheia', 'conflito_horario', 'indisponibilidade'] as const;
+
+const isAppointmentScenario = (value: unknown): value is AppointmentScenario => typeof value === 'string' && (appointmentScenarios as readonly string[]).includes(value);
+
+const payloadRecord = (payload: unknown): Record<string, unknown> => payload && typeof payload === 'object' && !Array.isArray(payload) ? payload as Record<string, unknown> : {};
+
+export const agendamentoResultado = (payload: unknown): AppointmentScenario => {
+  const body = payloadRecord(payload);
+  const scenario = body.cenario ?? body.scenario ?? body.resultado ?? body.mockScenario;
+  return isAppointmentScenario(scenario) ? scenario : 'sucesso';
+};
 
 export const atendimentoStatus = (id: string) => ({
   id,
