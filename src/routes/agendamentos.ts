@@ -10,7 +10,7 @@ export const agendamentosRoutes = new Hono<ApiEnv>()
   .get('/horarios-disponiveis', (c) => success(c, { filtros: queryParams(c.req.url), tempoMedioAtendimentoMinutos: Number(c.req.query('tempoMedioAtendimento') ?? 30), horarios: horariosDisponiveis() }))
   .post('/', async (c) => {
     const payload = await c.req.json().catch(() => ({}));
-    const resultado = agendamentoResultado(payload);
+    const resultado = agendamentoResultado(payload, c);
     if (resultado === 'agenda_cheia') return failure(c, 'SCHEDULE_FULL', 'Agenda cheia para unidade e serviço selecionados.', 409);
     if (resultado === 'conflito_horario') return failure(c, 'SCHEDULE_CONFLICT', 'Conflito com outro agendamento existente.', 409);
     if (resultado === 'indisponibilidade') return failure(c, 'BACKEND_UNAVAILABLE', 'Motor de agenda indisponível.', 503);

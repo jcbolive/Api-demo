@@ -148,7 +148,7 @@ Use um dos atributos `cenario`, `scenario`, `resultado` ou `mockScenario` com os
 - `conflito_horario`: retorna HTTP `409` com `SCHEDULE_CONFLICT`.
 - `indisponibilidade`: retorna HTTP `503` com `BACKEND_UNAVAILABLE`.
 
-Quando nenhum atributo é enviado, o padrão é `sucesso`.
+Quando nenhum atributo é enviado, o padrão é `sucesso`. Para compatibilidade com chamadas antigas, `?scenario=success` e `x-mock-scenario: success` também são interpretados como `sucesso` nesses endpoints, mas o controle recomendado é pelo atributo `cenario` no JSON.
 
 ## Instalação
 

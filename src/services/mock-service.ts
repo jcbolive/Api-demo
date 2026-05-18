@@ -31,10 +31,15 @@ const isAppointmentScenario = (value: unknown): value is AppointmentScenario => 
 
 const payloadRecord = (payload: unknown): Record<string, unknown> => payload && typeof payload === 'object' && !Array.isArray(payload) ? payload as Record<string, unknown> : {};
 
-export const agendamentoResultado = (payload: unknown): AppointmentScenario => {
+const normalizeAppointmentScenario = (value: unknown): AppointmentScenario | undefined => {
+  if (value === 'success') return 'sucesso';
+  return isAppointmentScenario(value) ? value : undefined;
+};
+
+export const agendamentoResultado = (payload: unknown, c?: Context<ApiEnv>): AppointmentScenario => {
   const body = payloadRecord(payload);
   const scenario = body.cenario ?? body.scenario ?? body.resultado ?? body.mockScenario;
-  return isAppointmentScenario(scenario) ? scenario : 'sucesso';
+  return normalizeAppointmentScenario(scenario) ?? normalizeAppointmentScenario(c?.req.query('scenario')) ?? normalizeAppointmentScenario(c?.req.header('x-mock-scenario')) ?? 'sucesso';
 };
 
 export const atendimentoStatus = (id: string) => ({

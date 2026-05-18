@@ -198,7 +198,7 @@ components:
                 type: string
                 enum: [sucesso, agenda_cheia, conflito_horario, indisponibilidade]
                 default: sucesso
-                description: Controla deterministicamente o resultado do agendamento, sem sorteio por tentativa.
+                description: Controla deterministicamente o resultado do agendamento, sem sorteio por tentativa. O header x-mock-scenario=success e a query scenario=success continuam aceitos como compatibilidade, mas o uso recomendado é este atributo.
   responses:
     Success:
       description: Resposta padronizada de sucesso
