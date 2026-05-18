@@ -494,7 +494,7 @@
             "url": "{{baseUrl}}/api/v1/veiculos/revisoes/agendar",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"cenario\": \"{{cenarioAgendamento}}\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
             }
           },
           "response": [
@@ -659,7 +659,7 @@
             "url": "{{baseUrl}}/api/v1/consultas/agendar",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"cenario\": \"{{cenarioAgendamento}}\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
             }
           },
           "response": [
@@ -863,7 +863,7 @@
             "url": "{{baseUrl}}/api/v1/agendamentos",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"cenario\": \"{{cenarioAgendamento}}\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
             }
           },
           "response": [
@@ -989,7 +989,7 @@
             "url": "{{baseUrl}}/api/v1/notificacoes",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
+              "raw": "{\n  \"unidade\": \"Hospital Central\",\n  \"servico\": \"Consulta Cardiologia\",\n  \"data\": \"2026-05-15\",\n  \"horario\": \"09:30\",\n  \"cenario\": \"{{cenarioAgendamento}}\",\n  \"canal\": \"whatsapp\",\n  \"destino\": \"+5511999990001\",\n  \"mensagem\": \"Sua solicitação foi confirmada.\"\n}"
             }
           },
           "response": [

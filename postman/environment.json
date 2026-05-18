@@ -10,6 +10,11 @@
       "key": "scenario",
       "value": "success",
       "enabled": true
+    },
+    {
+      "key": "cenarioAgendamento",
+      "value": "sucesso",
+      "enabled": true
     }
   ],
   "_postman_variable_scope": "environment"

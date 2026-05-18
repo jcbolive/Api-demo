@@ -103,7 +103,7 @@ paths:
   /veiculos/revisoes/agendar:
     post:
       tags: [Veículos]
-      summary: Agenda revisão e simula conflitos
+      summary: Agenda revisão com cenário controlado por atributo
       requestBody: { $ref: '#/components/requestBodies/Agendamento' }
       responses: { '201': { $ref: '#/components/responses/Success' }, '409': { $ref: '#/components/responses/Conflict' }, '503': { $ref: '#/components/responses/Unavailable' } }
   /especialidades:
@@ -126,7 +126,7 @@ paths:
   /consultas/agendar:
     post:
       tags: [Saúde]
-      summary: Agenda consulta médica
+      summary: Agenda consulta médica com cenário controlado por atributo
       requestBody: { $ref: '#/components/requestBodies/Agendamento' }
       responses: { '201': { $ref: '#/components/responses/Success' }, '409': { $ref: '#/components/responses/Conflict' }, '503': { $ref: '#/components/responses/Unavailable' } }
   /consultas/datas-disponiveis:
@@ -153,7 +153,7 @@ paths:
   /agendamentos:
     post:
       tags: [Agendamentos]
-      summary: Cria agendamento genérico
+      summary: Cria agendamento genérico com cenário controlado por atributo
       requestBody: { $ref: '#/components/requestBodies/Agendamento' }
       responses: { '201': { $ref: '#/components/responses/Success' }, '409': { $ref: '#/components/responses/Conflict' }, '503': { $ref: '#/components/responses/Unavailable' } }
   /agendamentos/{id}:
@@ -194,6 +194,11 @@ components:
               servico: { type: string, example: Consulta Cardiologia }
               data: { type: string, example: '2026-05-15' }
               horario: { type: string, example: '09:30' }
+              cenario:
+                type: string
+                enum: [sucesso, agenda_cheia, conflito_horario, indisponibilidade]
+                default: sucesso
+                description: Controla deterministicamente o resultado do agendamento, sem sorteio por tentativa. O header x-mock-scenario=success e a query scenario=success continuam aceitos como compatibilidade, mas o uso recomendado é este atributo.
   responses:
     Success:
       description: Resposta padronizada de sucesso

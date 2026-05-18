@@ -14,7 +14,7 @@ export const veiculosRoutes = new Hono<ApiEnv>()
   .get('/revisoes/datas-disponiveis', (c) => success(c, { filtros: { concessionaria: c.req.query('concessionaria'), periodo: c.req.query('periodo'), tipoRevisao: c.req.query('tipoRevisao') }, disponibilidade: availabilityWindow() }))
   .post('/revisoes/agendar', async (c) => {
     const payload = await c.req.json().catch(() => ({}));
-    const resultado = agendamentoResultado();
+    const resultado = agendamentoResultado(payload, c);
     if (resultado === 'agenda_cheia') return failure(c, 'SCHEDULE_FULL', 'Agenda da concessionária cheia para o período solicitado.', 409);
     if (resultado === 'conflito_horario') return failure(c, 'SCHEDULE_CONFLICT', 'Horário acabou de ser reservado por outro cliente.', 409);
     if (resultado === 'indisponibilidade') return failure(c, 'BACKEND_UNAVAILABLE', 'Sistema de oficina indisponível.', 503);
